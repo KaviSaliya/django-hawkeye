@@ -1,0 +1,240 @@
+.farming{
+    padding: 140px 0 140px;
+}
+.farming-right-shape{
+    position: absolute;
+    right: 20px;
+    top: 90px;
+}
+.farming .common-title-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.farming .common-title-container .common-title{
+    margin-bottom: 0;
+    text-align: left;
+    max-width: 481px;
+}
+.farming .common-title-top-right {
+    position: absolute;
+    right: 55px;
+    top: -30px;
+}
+.farming .common-title-container .common-title p{
+    margin-top: 10px;
+}
+
+.farming-carousol{
+    margin-left: 305px;
+    margin-right: -150px;
+}
+.farming-single{
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 342px;
+}
+.farming-single::before{
+    content: '';
+    width: 100%;
+    height: 0;
+    background-color: rgba(var(--secondary-color-rgb),0.8);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+.farming-single-image{
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+}
+.farming-single-image img{
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+}
+.farming-single-content{
+    position: absolute;
+    bottom: -115px;
+    padding: 30px 30px 35px;
+    background-color: rgba(var(--secondary-color-rgb),0.8);
+    transition: 0.5s;
+}
+.farming-single:hover::before{
+    height: 100%;
+}
+.farming-single:hover .farming-single-content{
+    bottom: 0;
+    background-color: transparent;
+}
+.farming-single:hover .farming-single-content a{
+    margin-bottom: 10px;
+}
+.farming-navigation .swiper-button-next, .farming-navigation .swiper-button-prev {
+    position: absolute;
+    top: 32% !important;
+    width: 27px;
+    height: 44px;
+    margin-top: 0;
+}
+.swiper-slide-next .farming-single::before{
+    height: 100%;
+}
+.swiper-slide-next .farming-single-content{
+    bottom: 0;
+    background-color: transparent;
+}
+.swiper-slide-next .farming-single-content a{
+    margin-bottom: 10px;
+}
+.farming-single-content a{
+    color: var(--white-color);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    margin-bottom: 30px;
+}
+.farming-single-content p{
+    color: #ECF6F6;
+    font-size: 14px;
+    line-height: 20px;
+}
+.farming-single-btn a{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--white-color);
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 1;
+}
+.farming-single-btn a:hover{
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    transform: rotate(45deg);
+}
+.farming-single-btn a:hover i{
+    color: var(--white-color);
+}
+
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+/* Large screen  */
+
+
+
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+    .farming {
+        padding: 80px 0 80px;
+    }
+    .farming-carousol {
+        margin-left: 85px;
+        margin-right: -150px;
+    }
+    .farming-navigation .swiper-button-next, .farming-navigation .swiper-button-prev {
+        top: 28% !important;
+    }
+}
+
+
+
+/* Medium screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .farming-carousol {
+        margin-left: 50px;
+    }
+    .farming-single-content {
+        bottom: -140px;
+    }
+    .farming-navigation .swiper-button-prev {
+        left: 86% !important;
+    }
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .farming {
+        padding: 80px 0 80px;
+    }
+    .farming-carousol {
+        margin-left: 38px;
+    }
+    .farming-single-content {
+        bottom: -120px;
+    }
+    .farming-single-content a {
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .farming-navigation .swiper-button-next, .farming-navigation .swiper-button-prev {
+        top: 27% !important;
+    }
+
+}
+
+
+
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px){
+    .farming {
+        padding: 80px 0 80px;
+    }
+    .farming-carousol {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .farming-single-content {
+        bottom: -120px;
+    }
+    .farming-single-content a {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .farming-right-shape{
+        display: none;
+    }
+    .farming-navigation .swiper-button-next, .farming-navigation .swiper-button-prev {
+        display: inline-flex;
+        top: 27% !important;
+    }
+    .farming-navigation .swiper-button-prev {
+        left: 82% !important;
+    }
+    .farming-single-content {
+        padding: 19px 30px 35px;
+    }
+    .farming-single-content a {
+        margin-bottom: 40px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .farming-navigation .swiper-button-prev {
+        left: 73% !important;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .farming-navigation .swiper-button-prev {
+        left: 68% !important;
+    }
+    .farming-navigation .swiper-button-next, .farming-navigation .swiper-button-prev {
+        top: 31% !important;
+    }
+}
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */

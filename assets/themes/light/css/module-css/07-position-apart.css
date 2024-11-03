@@ -1,0 +1,149 @@
+.position-apart{
+    padding: 140px 0 150px;
+    background-size: cover !important;
+    background-position: center center;
+}
+.position-apart-image{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.position-dot-box{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+.position-line-shape{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.position-apart .common-title h3{
+    color: var(--white-color);
+}
+.position-apart .common-title P {
+    max-width: 659px;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: var(--white-color);
+}
+.position-apart-left-container{
+    margin-right: 15px;
+}
+.position-apart-right-container{
+    margin-left: 70px;
+}
+.position-apart-content{
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+.position-apart-content .icon{
+    max-width: 36px;
+    width: 100%;
+}
+.position-apart-content .content a{
+    color: var(--white-color);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.position-apart-content .content a:hover{
+    color: var(--primary-color);
+}
+.position-apart-content .content p{
+    color: var(--white-color);
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+/* Large screen  */
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+    .position-apart {
+        padding: 80px 0 150px;
+    }
+    .position-apart-image {
+        left: 52%;
+    }
+}
+
+/* Medium screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .position-apart {
+        padding: 80px 0 50px;
+    }
+    .position-apart-right-container {
+        margin-left: 0;
+    }
+    .position-apart-image {
+        display: none;
+    }
+
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px){
+    .position-apart {
+        padding: 80px 0 50px;
+    }
+    .position-apart-right-container {
+        margin-left: 0;
+    }
+    .position-apart-image {
+        display: none;
+    }
+    .position-dot-box {
+        display: none;
+    }
+    .position-apart .common-title h3 {
+        font-size: 25px;
+        line-height: 34px;
+        text-align: left;
+        margin-top: 10px;
+    }
+    .common-title-container {
+        margin-bottom: 50px !important;
+    }
+}
+@media only screen and (max-width: 460px){
+    .position-apart {
+        padding: 50px 0 50px;
+    }
+    .position-apart-content{
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (max-width: 400px){
+    .position-apart {
+        padding: 80px 0 50px;
+    }
+    .position-apart-content{
+        margin-bottom: 20px;
+    }
+    .position-apart-content .content a{
+        font-size: 17px;
+    }
+    .position-apart-content .content p{
+        margin-top: 0;
+        font-size: 14px;
+    }
+
+}
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+
+.partner-logo img{
+    height: 50px;
+    width: 45px;
+}

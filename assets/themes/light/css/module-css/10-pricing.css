@@ -1,0 +1,329 @@
+.pricing{
+    padding: 140px 0 140px;
+    background: url('../../images/background/pricing-bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.pricing .common-title-top-right {
+    position: absolute;
+    right: -16px;
+    top: -30px;
+}
+.pricing .common-title h3{
+    max-width: 661px;
+    color: var(--white-color);
+    margin: 0 auto;
+}
+.pricing .common-title p{
+    color: var(--white-color);
+    margin-top: 15px;
+    font-size: 18px;
+}
+.pricing-card{
+    position: relative;
+    padding: 40px 40px 40px;
+    background: #204024;
+    border-radius: 16px;
+    border: 1px solid #204024;
+    transition: 0.5s;
+}
+.pricing-title p{
+    font-size: 13px;
+}
+.pricing-card-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.pricing-card:hover{
+    background: #173616;
+}
+.pricing-card h6{
+    color: var(--white-color);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.pricing-title{
+    display: flex;
+    align-items: flex-end;
+    gap: 19px;
+    margin-bottom: 20px;
+}
+.pricing-title h3{
+    color: var(--white-color);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 38px;
+}
+.pricing-title h3 span{
+    color: var(--primary-color);
+}
+.pricing-title p{
+    color: var(--white-color);
+}
+.pricing-list{
+    border-top: 1px solid #395738;
+    padding-top: 20px;
+}
+.pricing-list ul li{
+    color: var(--white-color);
+    margin-bottom: 10px;
+}
+.pricing-list ul li:last-child{
+    margin-bottom: 0;
+}
+.pricing-list ul li i{
+    color: var(--primary-color);
+    font-size: 14px;
+    margin-right: 5px;
+}
+.pricing-button{
+    margin-top: 40px;
+}
+.pricing-button .btn-1{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 13px 48px;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border: 1px solid var(--primary-color);
+}
+.pricing-button .btn-1 i {
+    width: 22px;
+    height: 22px;
+    font-weight: 600;
+    color: var(--white-color);
+}
+.pricing-button .btn-1 span{
+    background-color: var(--primary-color);
+}
+
+/* ----------------------------------------
+pricing-two
+------------------------------------------ */
+.pricing-two{
+    padding: 130px 0 140px;
+    background-color: #EEF2ED;
+}
+.dot-left{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.line-right{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.pricing-two .common-title{
+    max-width: 558px;
+    margin: 0 auto;
+}
+.pricing-two-single{
+    position: relative;
+    padding: 40px 40px;
+    background-color: var(--white-color);
+    border-radius: 16px;
+    box-shadow: 5px 5px 20px -4px rgba(222, 228, 225, 0.60);
+    border: 1px solid var(--white-color);
+    transition: 0.5s;
+    z-index: 1;
+}
+.pricing-two-single:hover{
+    border: 1px solid var(--primary-color);
+    background: #F9FFF4;
+}
+.pricing-two-single h4{
+    font-size: 32px;
+    font-weight: 500;
+    margin: 20px 0 8px;
+}
+.pricing-two-single h6{
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 400;
+}
+.pricing-two-single p{
+    font-size: 14px;
+}
+.pricing-two .pricing-list{
+    border-top: none;
+}
+.pricing-two .pricing-list ul li{
+    color: var(--black-color);
+}
+.pricing-two-info{
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-end;
+}
+.pricing-two-info h3{
+    line-height: 35px;
+    font-size: 18px;
+}
+.pricing-two-info h6{
+    font-size: 13px;
+    color: var(--black-color);
+    margin-left: 5px;
+}
+/* pricing-two */
+
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+/* Large screen  */
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+    .pricing {
+        padding: 80px 0 80px;
+    }
+
+    .pricing-two {
+        padding: 80px 0 80px;
+    }
+
+    .pricing-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;;
+    }
+    .pricing-two-info {
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    }
+
+    /* Medium screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .pricing-card {
+        padding: 40px 15px 40px;
+    }
+    .pricing-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;;
+    }
+
+    /*  */
+    .pricing-two {
+        padding: 80px 0 80px;
+    }
+    .pricing-two-single {
+        padding: 40px 20px;
+    }
+    .pricing-two-single h4 {
+        font-size: 24px;
+        margin: 12px 0 0px;
+    }
+    .pricing-two .pricing-list ul li {
+        font-size: 12px;
+    }
+
+    .pricing-two-info {
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .pricing {
+        padding: 80px 0 50px;
+    }
+    .pricing-card{
+        margin-bottom: 30px;
+    }
+    .pricing-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;;
+    }
+
+    /* pricing-two */
+    .pricing-two {
+        padding: 80px 0 60px;
+        background-color: #EEF2ED;
+    }
+    .pricing-two-single {
+        padding: 40px 20px;
+    }
+    .pricing-two-single h4 {
+        font-size: 22px;
+        margin: 20px 0 0px;
+    }
+    .pricing-two .dot-left {
+        display: none;
+    }
+    .pricing-two-single {
+        margin-bottom: 20px;
+    }
+
+    .pricing-two-info {
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px){
+    .pricing {
+        padding: 80px 0 50px;
+    }
+    .pricing-card{
+        margin-bottom: 30px;
+    }
+    .pricing-button .btn-1 {
+        font-size: 14px;
+        padding: 10px 25px;
+    }
+    .pricing .common-title-top-right {
+        right: 0;
+        top: -37px;
+    }
+    .pricing-card {
+        padding: 40px 15px 40px;
+    }
+    .pricing-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;;
+    }
+
+    /* pricing-two */
+    .pricing-two {
+        padding: 80px 0 60px;
+        background-color: #EEF2ED;
+    }
+    .pricing-two-single {
+        padding: 40px 20px;
+    }
+    .pricing-two-single h4 {
+        font-size: 22px;
+        margin: 20px 0 0px;
+    }
+    .pricing-two .dot-left {
+        display: none;
+    }
+    .pricing-two-single {
+        margin-bottom: 20px;
+    }
+
+    .pricing-two-info {
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */

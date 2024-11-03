@@ -1,0 +1,146 @@
+.subscribe{
+    z-index: 1;
+}
+.subscribe-container{
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 73px 0;
+    border-radius: 16px;
+    margin-bottom: -185px;
+}
+.subscribe-container-2 {
+    position: relative;
+    background: url('../../images/background/subscribed-02.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 73px 0;
+    border-radius: 16px;
+    margin-bottom: -185px;
+    margin-top: -214px;
+}
+.subscribe-content{
+    position: relative;
+    max-width: 652px;
+    text-align: center;
+}
+.subscribe-content-title-shape {
+    position: absolute;
+    left: -18px;
+    top: -31px;
+    animation: scal 1s linear infinite alternate;
+}
+.subscribe-content h3{
+    color: var(--white-color);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 52px;
+    margin-bottom: 40px;
+}
+.subscribe-content h3 span{
+    position: relative;
+    color: var(--primary-color);
+}
+.subscribe-content h3 span img{
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+.subscribe-content .btn-1{
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+.subscribe-content .btn-1 span{
+    background-color: var(--primary-color);
+}
+.subscribe-content .btn-1 i{
+    color: var(--white-color);
+}
+
+.subscribe-container-2 .subscribe-content h3 {
+    margin-bottom: 16px;
+}
+.subscribe-container-2 .subscribe-content p{
+    color: var(--white-color);
+    margin-bottom: 30px;
+}
+
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+/* Large screen  */
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+    .subscribe-container {
+        padding: 40px 0;
+        margin-bottom: -90px;
+    }
+    .subscribe-content h3 {
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 46px;
+    }
+}
+
+/* Medium screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .subscribe-container {
+        padding: 40px 0;
+        margin-bottom: -125px;
+    }
+    .subscribe-content h3 {
+        font-size: 38px;
+        line-height: 46px;
+        margin-bottom: 20px;
+    }
+
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .subscribe-container {
+        padding: 40px 0;
+        margin-bottom: -125px;
+    }
+    .subscribe-content h3 {
+        font-size: 38px;
+        line-height: 46px;
+        margin-bottom: 20px;
+    }
+
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px){
+    .subscribe-container {
+        padding: 40px 0;
+        margin-bottom: -125px;
+    }
+    .subscribe-content h3 {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .subscribe-content .btn-1{
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    .subscribe-content-title-shape {
+        left: 6px;
+        top: -32px;
+    }
+
+    .subscribe-container-2 {
+        padding: 73px 20px;
+        border-radius: 16px;
+        margin-bottom: -185px;
+    }
+}
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */

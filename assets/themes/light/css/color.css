@@ -1,0 +1,53 @@
+/* Default Color File  */
+
+:root {
+   
+    /* praimary color */
+    --primary-color: #60A548;
+
+    /* secondary color*/
+    --secondary-color: #60A548;
+    --secondary-color-rgb: 3, 63, 27;
+
+    /* text-color 1 */
+    --text-color-1: #595959;
+
+    /* text-color 2 */
+    --text-color-2: #C6C6C6;
+
+    /* black color */
+    --black-color: #090E13;
+
+    /* white color */
+    --white-color: #ffffff;
+    --white-color-rgb: 255, 255, 255;
+
+    /* Bg 1 */
+    --bg-1: #173616;
+
+    /* Bg 2 */
+    --bg-4: #033F1B;
+    
+
+    /* Bg 2 */
+    --bg-2: #F9FEF9;
+
+    /* Bg 3 */
+    --bg-3:  #EBF2F6;
+   
+     
+    /* Shadow 1 */
+    --shadow-1: 2px 1px 28.7px -2px rgba(155, 155, 155, 0.15);
+
+}
+
+
+
+
+
+
+
+
+
+
+

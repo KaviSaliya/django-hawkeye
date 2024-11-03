@@ -1,0 +1,369 @@
+.testimonial{
+    padding: 140px 0 140px;
+}
+.testimonial .common-title-container {
+    margin-bottom: 0;
+}
+.testimonial-shape-1{
+    position: absolute;
+    top: -150px;
+    left: 0;
+}
+.testimonial .earth-round {
+    position: absolute;
+    right: -20px;
+    top: 75px;
+    animation: round 25s linear infinite;
+}
+.testimonial .earth-round img{
+    width: 177px;
+    height: 177px;
+}
+.testimonial-doller-shape{
+    position: absolute;
+    top: 129px;
+    left: 173px;
+    animation: doller 3s linear infinite alternate;
+}
+@keyframes doller{
+    0%{
+        transform: scale(0.9);
+    }
+    75%{
+        transform: rotateY(45deg);
+    }
+    100%{
+        transform: scale(1.08);
+    }
+}
+.testimonial .common-title{
+    max-width: 617px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+.testimonial .common-title p{
+    margin-top: 10px;
+}
+.testimonial-single{
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid #60A548;
+    background: var(--white-color);
+    padding: 40px 31px 35px 24px;
+    z-index: 100;
+}
+.testimonial-single-image{
+    position: absolute;
+    top: -55px;
+    right: 20px;
+}
+.testimonial-info h5{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.rating li{
+    color: #F39E4F;
+    font-size: 12px;
+}
+.rating li:last-child{
+    color: #E2DFDC;
+}
+.testimonial-content{
+    margin-top: 15px;
+}
+.testimonial-content h6{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.testimonial .swiper-slide {
+    padding-top: 44px;
+}
+/* -----------------------------------------------
+investor-rivew
+-------------------------------------------------*/
+.investor-review {
+    padding: 120px 0 90px;
+}
+.investor-review .testimonial-doller-shape {
+    position: absolute;
+    top: 58px;
+    left: 63px;
+    animation: doller 3s linear infinite alternate;
+}
+.investor-review .common-title-container{
+    text-align: left;
+}
+.investor-review-two{
+    padding: 120px 0 0;
+}
+.investor-review .common-title-container{
+    text-align: left;
+}
+.investor-review .common-title{
+    text-align: start;
+    max-width: 563px;
+}
+.investor-review-content{
+    width: 100%;
+    background-color: rgba(var(--secondary-color-rgb),0.1);
+    padding: 20px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.investor-review-info{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.investor-review-info .investor{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.investor-review-info .info h5{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.investor-review-info .info p{
+    color: #595757;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.investor-review-info .review h6{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.14px;
+}
+.investor-review-info .review h6 i{
+    color: #F39E4F;
+    font-size: 10px;
+}
+.investor-review-message p{
+    border-top: 1px solid #EDEDED;
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.swiper-button-next{
+    right: 16% !important;
+
+}
+.swiper-button-prev {
+    left: 79% !important;
+}
+.swiper-button-next, .swiper-button-prev {
+    background-image: none !important;
+    position: absolute;
+    top: 15% !important;
+    color: var(--primary-color);
+    font-size: 22px;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.investor-review .swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+.investor-review .swiper-container::before, .investor-review .swiper-container::after{
+    content: '';
+    width: 15%;
+    height: 100%;
+    background: rgba(red, green, blue, alpha);
+}
+.investor-review-carousol .swiper-slide-prev, .investor-review-carousol .swiper-slide-duplicate-active{
+    opacity: 0.5;
+}
+/* -----------------------------------------------
+investor-rivew
+-------------------------------------------------*/
+
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+@media only screen and (min-width: 1441px) and (max-width: 1580px) {
+    .swiper-button-next {
+        right: 5.5% !important;
+    }
+    .swiper-button-prev {
+        left: 88% !important;
+    }
+}
+@media only screen and (max-width: 1440px){
+    .swiper-button-next {
+        right: 5.5% !important;
+    }
+    .swiper-button-prev {
+        left: 88% !important;
+    }
+}
+
+/* Large screen  */
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+    .testimonial {
+        padding: 80px 0 80px;
+    }
+    .investor-review .testimonial-doller-shape {
+        top: 23px;
+    }
+
+    .swiper-button-next {
+        right: 6.5% !important;
+    }
+    .swiper-button-prev {
+        left: 86% !important;
+    }
+}
+
+/* Medium screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .testimonial-single-image {
+        right: -23px;
+    }
+    .testimonial .common-title{
+        margin-bottom: 0;
+    }
+    .testimonial-single{
+        margin-top: 70px;
+    }
+
+    /*  */
+    .investor-review {
+        padding: 80px 0 60px;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        top: 14% !important;
+    }
+    .investor-review .swiper-button-next {
+        right: 5% !important;
+    }
+    .investor-review .swiper-button-prev {
+        left: 86% !important;
+    }
+
+    .investor-review .testimonial-doller-shape {
+        top: -45px;
+    }
+    .investor-review-two {
+        padding: 80px 0 0;
+    }
+     .investor-review-two .swiper-button-next, .investor-review-two .swiper-button-prev {
+        top: 22% !important;
+    }
+    .investor-review .pagination-style-one .slider__pagination3.swiper-pagination-clickable.swiper-pagination-bullets {
+        margin-top: 0;
+    }
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .testimonial {
+        padding: 80px 0 80px;
+    }
+    .testimonial .common-title{
+        margin-bottom: 0;
+    }
+    .testimonial-single{
+        margin-top: 70px;
+    }
+
+    .investor-review {
+        padding: 60px 0 60px;
+    }
+    .investor-review .testimonial-doller-shape {
+        top: -44px;
+        left: 19px;
+    }
+    .investor-review .swiper-button-next, .investor-review .swiper-button-prev {
+        top: 11% !important;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        top: 11% !important;
+    }
+    .swiper-button-next {
+        right: 5% !important;
+    }
+    .swiper-button-prev {
+        left: 84% !important;
+    }
+
+    .investor-review-two {
+        padding: 80px 0 0;
+    }
+     .investor-review-two .swiper-button-next, .swiper-button-prev {
+        top: 22% !important;
+    }
+
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px){
+    .testimonial {
+        padding: 80px 0 80px;
+    }
+    .testimonial .common-title{
+        margin-bottom: 0;
+    }
+    .testimonial-single{
+        margin-top: 70px;
+    }
+    .testimonial-doller-shape {
+        top: 252px;
+        left: 20px;
+    }
+    .testimonial .earth-round{
+        display: none;
+    }
+    .testimonial-single-image {
+        top: -45px;
+        right: 0;
+    }
+    .testimonial-single-image img{
+        width: 100px;
+        height: 100px;
+    }
+
+    /* investor-review */
+    .investor-review {
+        padding: 60px 0 60px;
+    }
+    .swiper-button-next, .swiper-button-prev{
+        display: none;
+    }
+    .investor-review .testimonial-doller-shape {
+        top: 83%;
+        left: 10px;
+    }
+
+    .investor-review-two {
+        padding: 80px 0 0;
+    }
+     .investor-review-two .swiper-button-next, .swiper-button-prev {
+        top: 22% !important;
+    }
+}
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */

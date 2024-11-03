@@ -1,0 +1,284 @@
+.about{
+    padding: 140px 0 140px;
+    background: radial-gradient(349.94% 109.46% at 31.67% 43.8%, #F2FFF4 0%, #FFF 100%);
+}
+.about .angle-shape{
+    position: absolute;
+    left: 43px;
+    bottom: 18px;
+    animation: scal 2s linear infinite alternate;
+}
+@keyframes scal{
+    0%{
+        transform: scale(0.95);
+    }
+    100%{
+        transform: scale(1.04);
+    }
+}
+.about .line-shape{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.about-left-container {
+    margin-right: -40px;
+}
+.about-left-image img{
+    border-radius: 16px;
+}
+
+.about-right-container {
+    margin-left: 50px;
+}
+.about-right-content h1{
+    margin: 16px 0 12px;
+}
+.about-2-right-content h1 span{
+    color: var(--primary-color);
+}
+.about-2-right-content p{
+    margin: 20px 0 48px;
+}
+.about-2-right-content .btn-1{
+    border: 1px solid var(--primary-color);
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+.about-2-right-content .btn-1 i{
+    color: var(--white-color);
+}
+
+.about-carousol {
+    margin-top: -210px;
+    margin-left: 48px;
+}
+.about-single-image {
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.about-single-image:hover{
+    border: 1px solid var(--primary-color);
+}
+.about-carousol .slider__pagination3 {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.about-carousol .swiper-pagination-bullet {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 100%;
+    background: var(--primary-color);
+    opacity: 1;
+}
+.about-carousol .swiper-pagination-bullet-active::after{
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* about page */
+.about-page{
+    padding: 140px 0 140px;
+}
+.about-page-left-container {
+    position: relative;
+    margin-right: 25px;
+}
+.about-page-image{
+    padding: 20px;
+    border-radius: 16px;
+}
+.about-page-image img{
+    border-radius: 16px;
+}
+.shape-top, .shape-bottom{
+    position: absolute;
+    width: 469px;
+    height: 389px;
+    border-radius: 16px;
+    z-index: -1;
+}
+.shape-top{
+    top: 0;
+    left: 0;
+    background: #60A548;
+}
+.shape-bottom{
+    right: 0;
+    bottom: 0;
+    background: #D6EDD9;
+}
+.about-page-right-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.about-page-title h2{
+    color: var(--black-color);
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+    margin-bottom: 16px;
+}
+.about-page-title h2 span{
+    color: var(--primary-color);
+}
+.about-page-btn-group {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.about-page-btn-group a{
+    color: var(--primary-color);
+    font-size: 18px;
+    line-height: 32px;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    margin-top: 15px;
+}
+.about-page-btn-group span{
+    background-color: var(--primary-color) !important;
+}
+.about-page-btn-group a i{
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 18px;
+    transition: 0.5s;
+}
+.about-page-btn-group a:hover i{
+    color: var(--white-color);
+}
+
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
+/* Large screen  */
+@media only screen and (min-width: 1200px) and (max-width: 1319px){
+    .about {
+        padding: 80px 0 80px;
+    }
+    .about-2-right-content h1 {
+        font-size: 44px;
+        line-height: 56px;
+    }
+    .about-carousol {
+        margin-top: -173px;
+        margin-left: 48px;
+    }
+}
+
+/* Medium screen  */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .about {
+        padding: 80px 0 80px;
+    }
+    .about-2-right-content h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .about-2-right-content p {
+        margin: 20px 0 30px;
+    }
+    .about-carousol {
+        margin-top: -130px;
+        margin-left: 48px;
+    }
+
+    .about-page-title h2 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .about {
+        padding: 80px 0 80px;
+    }
+    .about-left-container {
+        display: none;
+    }
+    .about-2-right-content h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .about-right-container {
+        margin-left: 0;
+        margin-top: 0;
+    }
+    .about-2-right-content p {
+        margin: 20px 0 30px;
+    }
+    .about-carousol {
+        margin-top: 40px;
+        margin-left: 0;
+    }
+
+    .about-page {
+        padding: 80px 0 80px;
+    }
+    .about-page-right-container{
+        margin-top: 40px;
+    }
+    .about-page-title h2 {
+        font-size: 34px;
+        line-height: 45px;
+    }
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px){
+    .about {
+        padding: 80px 0 140px;
+    }
+    .about-left-container {
+        margin-right: 0;
+    }
+    .about-carousol {
+        margin-top: 40px;
+        margin-left: 0;
+    }
+    .about-2-right-content h1 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .about-right-container {
+        margin-top: 30px;
+        margin-left: 0;
+    }
+
+
+    .about-page {
+        padding: 60px 0 60px;
+    }
+    .shape-top, .shape-bottom {
+        width: 230px;
+        height: 180px;
+    }
+    .about-page-right-container{
+        margin-top: 30px;
+    }
+    .about-page-title h2 {
+        font-size: 22px;
+        line-height: 31px;
+    }
+}
+/* ---------------------------------------------------------------
+Responsive
+----------------------------------------------------------------- */
