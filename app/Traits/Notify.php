@@ -117,14 +117,61 @@ trait Notify
                 $template = $requestMessage;
             }
         }
-
+        
         if (config('SMSConfig.default') == 'manual') {
+            // Prepare headers
+            $headerData = [
+                "Authorization: Bearer 99|F0kn7khJdyJSssyS0yLkNGqLo6n5rhrsukcYHLdk8b05aebf", // Replace with your actual API key
+                "Content-Type: application/json",
+                "Accept: application/json"
+            ];
+        
+            // Prepare form data
+            $formData = is_null($smsControl->form_data) ? [] : json_decode($smsControl->form_data, true);
+        
+            // Replace placeholders with actual values
+            $formData = recursive_array_replace('[[receiver]]', $user->phone, recursive_array_replace('[[message]]', $template, $formData));
+        
+            // Set up the data for the SMS gateway
+            $data = [
+                "recipient" => $formData['recipient'], // Use the recipient phone number
+                "sender_id" => $formData['sender_id'], // Sender ID
+                "type" => $formData['type'],           // Message type (e.g., "plain")
+                "message" => $formData['message']      // Message content
+            ];
+        
+            // Encode the data as JSON
+            $jsonData = json_encode($data);
+        
+            // Initialize cURL request
+            $curl = curl_init();
+            curl_setopt_array($curl, [
+                CURLOPT_URL => "https://app.text.lk/api/v3/sms/send", // SMS gateway URL
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $jsonData,
+                CURLOPT_HTTPHEADER => $headerData,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            ]);
+        
+            // Execute the request and close cURL
+            $response = curl_exec($curl);
+            curl_close($curl);
+        
+            return $response;
+        }
+
+        else if (config('SMSConfig.default') == 'manual' && false) {
             $headerData = is_null($smsControl->header_data) ? [] : json_decode($smsControl->header_data, true);
             $paramData = is_null($smsControl->header_data) ? [] : json_decode($smsControl->header_data, true);
             $paramData = http_build_query($paramData);
             $actionUrl = $smsControl->action_url;
             $actionMethod = $smsControl->action_method;
             $formData = is_null($smsControl->form_data) ? [] : json_decode($smsControl->form_data, true);
+            
+            die(json_encode($formData));
             
             $queryString = 'FUN=' . $formData['FUN'] . '&with_get=' . $formData['with_get'] . '&un=' . $formData['un'] . '&up=' . $formData['up'] . '&senderID=' . $formData['senderID'] . '&msg=' . urlencode($formData['msg']) . '&to=' . $formData['to'];
             $fullUrl = $actionUrl . '?' . $queryString;
