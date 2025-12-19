@@ -1,6 +1,6 @@
 # django-hawkeye 🎯
 
-Django BM25 full-text search using PostgreSQL [pg_textsearch](https://github.com/paradedb/pg_textsearch) - a lightweight Elasticsearch alternative.
+Django BM25 full-text search using PostgreSQL [pg_textsearch](https://github.com/timescale/pg_textsearch) - a lightweight Elasticsearch alternative.
 
 ## Features
 
