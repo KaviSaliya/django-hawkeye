@@ -34,35 +34,35 @@ class TestBM25Search:
             content="Optimizing database queries improves application performance.",
         )
 
-    def test_bm25_search_basic(self):
+    def test_search_basic(self):
         """Test basic BM25 search."""
-        results = Article.objects.bm25_search("postgresql", "content")
+        results = Article.search("postgresql")
 
         assert results.count() >= 1
         # Results ordered by ascending score (lower = better)
         first = results.first()
         assert first.bm25_score < 0  # Negative scores
 
-    def test_bm25_search_with_limit(self):
+    def test_search_with_limit(self):
         """Test BM25 search with limit."""
-        results = Article.objects.bm25_search("database", "content", limit=2)
+        results = Article.search("database")[:2]
 
-        assert results.count() <= 2
+        assert len(list(results)) <= 2
 
-    def test_bm25_search_empty_query(self):
+    def test_search_empty_query(self):
         """Test BM25 search with empty query returns nothing."""
-        results = Article.objects.bm25_search("", "content")
+        results = Article.search("")
 
         assert results.count() == 0
 
-    def test_bm25_search_nonexistent_term(self):
+    def test_search_nonexistent_term(self):
         """Test BM25 search with non-matching term still returns results.
 
         BM25 ranking doesn't filter - it scores all documents.
         Non-matching documents get score 0 but are still returned.
-        Use bm25_filter with a threshold to exclude non-matches.
+        Use filter with threshold to exclude non-matches.
         """
-        results = list(Article.objects.bm25_search("nonexistentterm12345", "content"))
+        results = list(Article.search("nonexistentterm12345"))
 
         # All documents returned (BM25 ranks, doesn't filter)
         assert len(results) == 4
@@ -70,44 +70,49 @@ class TestBM25Search:
         for article in results:
             assert article.bm25_score == 0
 
-    def test_bm25_filter_with_threshold(self):
-        """Test BM25 filter with threshold returns matching documents."""
-        results = Article.objects.bm25_filter(
-            "database", "content", "article_content_bm25", threshold=-0.5
-        )
+    def test_search_with_threshold_filter(self):
+        """Test BM25 search with threshold filter returns matching documents."""
+        results = Article.search("database").filter(bm25_score__lt=-0.5)
 
         # Should return documents matching the threshold
         assert results.exists()
         assert results.count() >= 1
 
-    def test_bm25_filter_nonexistent_term_returns_nothing(self):
-        """Test BM25 filter with nonexistent term returns 0 results.
+    def test_search_threshold_excludes_nonmatching(self):
+        """Test threshold filter excludes non-matching documents.
 
-        Unlike bm25_search which returns all documents with scores,
-        bm25_filter excludes documents that don't meet the threshold.
         Non-matching documents have score 0, which doesn't pass threshold < -0.5.
         """
-        results = Article.objects.bm25_filter(
-            "nonexistentterm12345", "content", "article_content_bm25", threshold=-0.5
-        )
+        results = Article.search("nonexistentterm12345").filter(bm25_score__lt=-0.5)
 
         # No documents match - score 0 doesn't pass threshold < -0.5
         assert results.count() == 0
 
-    def test_bm25_filter_stricter_threshold(self):
-        """Test BM25 filter with stricter threshold returns fewer results."""
+    def test_search_stricter_threshold(self):
+        """Test stricter threshold returns fewer results."""
         # Relaxed threshold - more results
-        relaxed = Article.objects.bm25_filter(
-            "database", "content", "article_content_bm25", threshold=-0.1
-        )
+        relaxed = Article.search("database").filter(bm25_score__lt=-0.1)
 
         # Stricter threshold - fewer results
-        strict = Article.objects.bm25_filter(
-            "database", "content", "article_content_bm25", threshold=-5.0
-        )
+        strict = Article.search("database").filter(bm25_score__lt=-5.0)
 
         # Stricter threshold should return same or fewer results
         assert strict.count() <= relaxed.count()
+
+    def test_search_chainable_with_filter(self):
+        """Test search is chainable with Django filter."""
+        results = Article.search("database").filter(title__icontains="performance")
+
+        assert results.count() >= 1
+        for article in results:
+            assert "performance" in article.title.lower()
+
+    def test_search_chainable_with_exclude(self):
+        """Test search is chainable with Django exclude."""
+        all_results = Article.search("database")
+        filtered = Article.search("database").exclude(title__icontains="performance")
+
+        assert filtered.count() < all_results.count()
 
 
 @pytest.mark.django_db
@@ -129,7 +134,7 @@ class TestBM25Score:
     def test_bm25_score_annotation(self):
         """Test BM25Score annotation."""
         results = Article.objects.annotate(
-            score=BM25Score("content", "postgresql")
+            score=BM25Score("content", "postgresql", index_name="article_content_bm25")
         ).order_by("score")
 
         assert results.count() >= 1

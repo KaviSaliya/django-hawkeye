@@ -5,11 +5,10 @@ Requires PostgreSQL 17+ with pg_textsearch extension.
 https://github.com/timescale/pg_textsearch
 
 Usage:
-    from django_pg_textsearch import BM25Index, BM25SearchManager
+    from django_pg_textsearch import BM25Index, BM25Searchable
 
-    class Article(models.Model):
+    class Article(BM25Searchable, models.Model):
         content = models.TextField()
-        objects = BM25SearchManager()
 
         class Meta:
             indexes = [
@@ -17,7 +16,8 @@ Usage:
             ]
 
     # BM25 search (scores are NEGATIVE, lower = better)
-    Article.objects.bm25_search('postgresql', 'content')
+    Article.search('postgresql')
+    Article.search('django').filter(published=True)[:10]
 """
 
 __version__ = "0.1.0"
@@ -25,20 +25,22 @@ __version__ = "0.1.0"
 from .checks import get_postgresql_version, is_pg_textsearch_available
 from .expressions import BM25Match, BM25Query, BM25Score
 from .indexes import BM25Index
-from .managers import BM25SearchManager, BM25SearchQuerySet
+from .mixins import BM25Searchable
 from .operations import CreateBM25Index, CreateExtension, CreatePgTextsearchExtension
+from .search import BM25SearchQuerySet
 
 __all__ = [
     "__version__",
+    # Mixin
+    "BM25Searchable",
     # Index
     "BM25Index",
+    # Search
+    "BM25SearchQuerySet",
     # Expressions
     "BM25Match",
     "BM25Query",
     "BM25Score",
-    # Managers
-    "BM25SearchManager",
-    "BM25SearchQuerySet",
     # Operations
     "CreateBM25Index",
     "CreateExtension",
