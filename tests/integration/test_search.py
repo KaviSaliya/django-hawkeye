@@ -62,13 +62,13 @@ class TestBM25Search:
         Non-matching documents get score 0 but are still returned.
         Use bm25_filter with a threshold to exclude non-matches.
         """
-        results = Article.objects.bm25_search("nonexistentterm12345", "content")
+        results = list(Article.objects.bm25_search("nonexistentterm12345", "content"))
 
         # All documents returned (BM25 ranks, doesn't filter)
-        assert results.count() == 4
+        assert len(results) == 4
         # Scores should be 0 for non-matching terms
-        first = results.first()
-        assert first.bm25_score == 0
+        for article in results:
+            assert article.bm25_score == 0
 
     def test_bm25_filter_with_threshold(self):
         """Test BM25 filter with threshold returns matching documents."""
