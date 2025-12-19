@@ -49,49 +49,6 @@ def check_postgresql_version(app_configs, **kwargs):
     return errors
 
 
-@register(Tags.database)
-def check_pg_textsearch_extension(app_configs, **kwargs):
-    """
-    Check that the pg_textsearch extension is installed.
-    """
-    errors = []
-
-    if connection.vendor != "postgresql":
-        return errors
-
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """
-                SELECT EXISTS (
-                    SELECT 1 FROM pg_extension WHERE extname = 'pg_textsearch'
-                )
-                """
-            )
-            installed = cursor.fetchone()[0]
-
-            if not installed:
-                errors.append(
-                    Error(
-                        "pg_textsearch extension is not installed",
-                        hint=(
-                            "Install pg_textsearch extension: CREATE EXTENSION pg_textsearch; "
-                            "or use the CreatePgTextsearchExtension migration operation."
-                        ),
-                        id="django_hawkeye.E003",
-                    )
-                )
-    except Exception as e:
-        errors.append(
-            Warning(
-                f"Could not check pg_textsearch extension: {e}",
-                id="django_hawkeye.W002",
-            )
-        )
-
-    return errors
-
-
 def is_pg_textsearch_available():
     """
     Check if pg_textsearch extension is available and installed.

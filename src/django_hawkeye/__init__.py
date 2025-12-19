@@ -19,7 +19,7 @@ Links:
 Basic Usage
 -----------
 
-1. Add the mixin and index to your model::
+1. Add 'django_hawkeye' to INSTALLED_APPS and add the index to your model::
 
     from django_hawkeye import BM25Index, BM25Searchable
 
@@ -36,6 +36,8 @@ Basic Usage
 
     python manage.py makemigrations
     python manage.py migrate
+
+   The pg_textsearch extension is automatically created when the first BM25Index is applied.
 
 3. Search::
 
