@@ -171,8 +171,6 @@ trait Notify
             $actionMethod = $smsControl->action_method;
             $formData = is_null($smsControl->form_data) ? [] : json_decode($smsControl->form_data, true);
             
-            die(json_encode($formData));
-            
             $queryString = 'FUN=' . $formData['FUN'] . '&with_get=' . $formData['with_get'] . '&un=' . $formData['un'] . '&up=' . $formData['up'] . '&senderID=' . $formData['senderID'] . '&msg=' . urlencode($formData['msg']) . '&to=' . $formData['to'];
             $fullUrl = $actionUrl . '?' . $queryString;
 
